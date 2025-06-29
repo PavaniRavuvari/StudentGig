@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Student Gig</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom scrollbar for overall page */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb; /* Light gray background, consistent */
+        }
+        /* Custom styles for button hover effects */
+        .button-primary {
+            @apply inline-block px-8 py-3 rounded-full text-white font-semibold transition-all duration-300 ease-in-out;
+            background: linear-gradient(90deg, #6366f1, #a855f7); /* Purple gradient */
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+        .button-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+            background: linear-gradient(90deg, #a855f7, #6366f1); /* Reverse gradient on hover */
+        }
+        /* Custom styles for section titles */
+        .page-title {
+            @apply text-4xl md:text-5xl font-extrabold text-gray-800 mb-8 text-center;
+        }
+    </style>
+</head>
+<body class="antialiased bg-gray-50 text-gray-700 leading-relaxed">
+    <header class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-6 shadow-lg rounded-b-3xl">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl font-extrabold mb-2">Student Dashboard</h1>
+            <p class="text-xl font-light opacity-90">Welcome to your personalized portal!</p>
+        </div>
+    </header>
+
+    <nav class="bg-white shadow-md sticky top-0 z-50 rounded-b-2xl">
+        <div class="container mx-auto px-4 py-4 flex flex-wrap justify-center md:justify-between items-center">
+            <div class="text-lg font-bold text-indigo-700 hidden md:block">Student Gig</div>
+            <ul class="flex flex-wrap justify-center space-x-4 md:space-x-8">
+                <li><a href="index.html" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 rounded-md py-2 px-3">Home</a></li>
+                    
+                
+                <li><a href="post-job.html" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 rounded-md py-2 px-3">Jobs</a></li>
+                <li><a href="job-details.html" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 rounded-md py-2 px-3">Job-Details</a></li>
+                <li><a href="index.html" id="logoutButton" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 rounded-md py-2 px-3">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-12">
+        <div class="bg-white rounded-3xl shadow-xl p-8 md:p-16 mb-12">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-gray-800 mb-8 text-center">Hello User<span id="userNameDisplay"></span></h2>
+            <p class="text-center text-lg text-gray-600 mb-12">Here's a quick overview of your activities.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-indigo-50 p-6 rounded-2xl shadow-inner border border-indigo-200">
+                    <h3 class="text-2xl font-bold text-indigo-700 mb-4">Applied Jobs</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span>Marketing Intern at <span class="font-semibold">TechCorp</span></span>
+                            <span class="text-sm text-gray-500">(Applied 2 days ago)</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span>Research Assistant at <span class="font-semibold">University Lab</span></span>
+                            <span class="text-sm text-gray-500">(Applied 1 week ago)</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L9.586 10l-2.293 2.293a1 1 0 001.414 1.414L10 11.414l2.293 2.293a1 1 0 001.414-1.414L10.414 10l2.293-2.293a1 1 0 00-1.414-1.414L10 8.586 7.707 6.293z" clip-rule="evenodd"></path></svg>
+                            <span>Cafeteria Staff at <span class="font-semibold">Campus Dining</span></span>
+                            <span class="text-sm text-gray-500">(Under Review)</span>
+                        </li>
+                    </ul>
+                    <div class="mt-6 text-center">
+                        <a href="job-details.html" class="text-indigo-600 hover:text-indigo-800 font-semibold transition duration-300">View All Applied Jobs &rarr;</a>
+                    </div>
+                </div>
+
+                <div class="bg-purple-50 p-6 rounded-2xl shadow-inner border border-purple-200">
+                    <h3 class="text-2xl font-bold text-purple-700 mb-4">Saved Jobs</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path d="M5 4a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2V6a2 2 0 00-2-2H5zm0 2h10v6H5V6zm5 8a1 1 0 110 2 1 1 0 010-2z"></path></svg>
+                            <span>Retail Sales Associate at <span class="font-semibold">Fashion Hub</span></span>
+                            <span class="text-sm text-gray-500">(Full-time)</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <svg class="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path d="M5 4a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2V6a2 2 0 00-2-2H5zm0 2h10v6H5V6zm5 8a1 1 0 110 2 1 1 0 010-2z"></path></svg>
+                            <span>Data Entry Clerk at <span class="font-semibold">Local Business</span></span>
+                            <span class="text-sm text-gray-500">(Part-time)</span>
+                        </li>
+                    </ul>
+                    <div class="mt-6 text-center">
+                        <a href="job-details.html" class="text-purple-600 hover:text-purple-800 font-semibold transition duration-300">Browse More Jobs &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8 mt-12 rounded-t-3xl">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-lg">&copy; 2025 Student Gig. All rights reserved.</p>
+            <p class="text-sm mt-2 opacity-80">Designed with passion for student success.</p>
+        </div>
+    </footer>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Firebase configuration and initialization (provided by Canvas environment)
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+
+        // Initialize Firebase
+        let app;
+        let auth;
+        let db;
+
+        try {
+            if (Object.keys(firebaseConfig).length > 0) {
+                app = initializeApp(firebaseConfig);
+                auth = getAuth(app);
+                db = getFirestore(app);
+
+                // Attempt anonymous sign-in or custom token sign-in
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    signInWithCustomToken(auth, __initial_auth_token).catch((error) => {
+                        console.error("Error signing in with custom token:", error);
+                        signInAnonymously(auth).catch(err => console.error("Anonymous sign-in failed:", err));
+                    });
+                } else {
+                    signInAnonymously(auth).catch(err => console.error("Anonymous sign-in failed:", err));
+                }
+            } else {
+                console.error("Firebase config is empty. Cannot initialize Firebase.");
+            }
+        } catch (error) {
+            console.error("Error initializing Firebase:", error);
+        }
+
+        // Dashboard specific elements to update
+        const userNameDisplay = document.getElementById('userNameDisplay');
+        const summaryFullName = document.getElementById('summaryFullName');
+        const summaryMajor = document.getElementById('summaryMajor');
+        const summaryUniversity = document.getElementById('summaryUniversity');
+        const summaryBio = document.getElementById('summaryBio');
+        const dashboardProfilePicture = document.getElementById('dashboardProfilePicture'); // For future use with profile pics
+
+        // Function to load user profile data from Firestore and update dashboard
+        async function loadDashboardData(user) {
+            if (!user || !db) {
+                console.log("User or Firestore not ready.");
+                userNameDisplay.textContent = "Guest"; // Fallback if no user or db
+                summaryFullName.textContent = "Guest User";
+                summaryMajor.textContent = "";
+                summaryUniversity.textContent = "";
+                summaryBio.textContent = "Please log in and set up your profile.";
+                return;
+            }
+
+            const userDocRef = doc(db, "users", user.uid); // Reference to the user's specific document in 'users' collection
+            try {
+                const docSnap = await getDoc(userDocRef); // Fetch the document
+                if (docSnap.exists()) {
+                    const data = docSnap.data(); // Get the data from the document
+                    console.log("Fetched user data:", data); // Debug: see what data is fetched
+
+                    // Update main welcome header
+                    userNameDisplay.textContent = data.fullName || user.email || 'Student'; // Use saved full name, fallback to email, then 'Student'
+
+                    // Update "Your Profile at a Glance" section
+                    summaryFullName.textContent = data.fullName || 'Not set';
+                    summaryMajor.textContent = data.major ? `${data.major} Student` : 'Not set';
+                    summaryUniversity.textContent = data.university || 'Not set';
+                    summaryBio.textContent = data.bio || 'Tell us about yourself in Edit Profile!';
+
+                    // Add logic to load profile picture if you implement storage (e.g., if (data.profilePictureUrl) { dashboardProfilePicture.src = data.profilePictureUrl; })
+                } else {
+                    console.log("No profile data found for user:", user.uid);
+                    // If no document exists, use email from auth or a generic fallback
+                    userNameDisplay.textContent = user.email ? user.email.split('@')[0] : 'New User';
+                    summaryFullName.textContent = 'New User';
+                    summaryMajor.textContent = 'Not set';
+                    summaryUniversity.textContent = 'Not set';
+                    summaryBio.textContent = 'Complete your profile in Edit Profile!';
+                }
+            } catch (error) {
+                console.error("Error loading dashboard data:", error);
+                // Fallback in case of an error fetching data
+                userNameDisplay.textContent = user.email ? user.email.split('@')[0] : 'User Error';
+                summaryFullName.textContent = 'Error Loading Profile';
+                summaryMajor.textContent = '';
+                summaryUniversity.textContent = '';
+                summaryBio.textContent = 'Could not load profile. Please try refreshing.';
+            }
+        }
+
+        // Listen for authentication state changes
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in. Load their dashboard data.
+                loadDashboardData(user);
+            } else {
+                // User is signed out. Reset to default and/or redirect.
+                console.log("No user logged in on dashboard. Redirecting.");
+                userNameDisplay.textContent = "Guest";
+                summaryFullName.textContent = "Guest User";
+                summaryMajor.textContent = "";
+                summaryUniversity.textContent = "";
+                summaryBio.textContent = "Please log in to see your personalized dashboard.";
+                // Redirect to login page if no user is found
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 1500); // Give a brief moment to show "Guest"
+            }
+        });
+
+        // Logout functionality (consistent across pages)
+        const logoutButton = document.getElementById('logoutButton');
+        if (logoutButton) {
+            logoutButton.addEventListener('click', async (e) => {
+                e.preventDefault();
+                if (auth) {
+                    try {
+                        await auth.signOut();
+                        alert("You have been logged out.");
+                        window.location.href = 'index.html'; // Redirect to home after logout
+                    } catch (error) {
+                        console.error("Error during logout:", error);
+                        alert("Logout failed. Please try again.");
+                    }
+                } else {
+                    alert("No active authentication session.");
+                    window.location.href = 'index.html'; // Redirect anyway if auth isn't available
+                }
+            });
+        }
+    </script>
+</body>
+</html>
