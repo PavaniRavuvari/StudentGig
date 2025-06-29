@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Job Board - Student Gig</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom scrollbar for overall page */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb; /* Light gray background, consistent with other pages */
+        }
+        /* Custom styles for button hover effects */
+        .button-primary {
+            @apply inline-block px-8 py-3 rounded-full text-white font-semibold transition-all duration-300 ease-in-out;
+            background: linear-gradient(90deg, #6366f1, #a855f7); /* Purple gradient */
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+        .button-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+            background: linear-gradient(90deg, #a855f7, #6366f1); /* Reverse gradient on hover */
+        }
+        /* Custom styles for section titles */
+        .page-title {
+            @apply text-4xl md:text-5xl font-extrabold text-gray-800 mb-8 text-center;
+        }
+    </style>
+</head>
+<body class="antialiased bg-gray-50 text-gray-700 leading-relaxed">
+    <header class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-6 shadow-lg rounded-b-3xl">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl font-extrabold mb-2">Student Job Board</h1>
+            <p class="text-xl font-light opacity-90">Find part-time jobs and internships tailored for students.</p>
+        </div>
+    </header>
+
+    <nav class="bg-white shadow-md sticky top-0 z-50 rounded-b-2xl">
+        <div class="container mx-auto px-4 py-4 flex flex-wrap justify-center md:justify-between items-center">
+            <div class="text-lg font-bold text-indigo-700 hidden md:block">Student Gig</div>
+            <ul class="flex flex-wrap justify-center space-x-4 md:space-x-8">
+                <li><a href="index.html" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 rounded-md py-2 px-3">Home</a></li>
+                <li><a href="student-dashboard.html" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 rounded-md py-2 px-3">Dashboard</a></li>
+                
+                <!-- <li><a href="job-details.html" class="text-indigo-600 font-bold transition duration-300 rounded-md py-2 px-3">Job-Details</a></li> -->
+                <li><a href="index.html" id="logoutButton" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 rounded-md py-2 px-3">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="min-h-screen flex flex-col items-center py-10 px-4 sm:px-6 lg:px-8">
+        <main class="w-full max-w-4xl grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+
+            <div class="bg-white shadow-lg rounded-xl p-6 flex flex-col justify-between transform transition-transform hover:scale-105 duration-300">
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">Retail Sales Associate</h2>
+                    <p class="text-indigo-600 text-sm font-semibold mb-3">Part-time | Flexible Hours</p>
+                    <p class="text-gray-700 mb-4">
+                        Join our dynamic retail team. Responsibilities include assisting customers, managing inventory, and maintaining a tidy store environment. Great opportunity for communication skills development.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-600 text-sm mb-4">
+                        <li>No prior experience required</li>
+                        <li>Must be available evenings and weekends</li>
+                        <li>Excellent communication skills</li>
+                    </ul>
+                    <div class="mt-auto pt-4 border-t border-gray-200 text-sm text-gray-500">
+                        <p><strong>Location:</strong> Downtown City Centre</p>
+                        <p><strong>Salary:</strong> $15 - $18/hour</p>
+                    </div>
+                </div>
+                <div class="flex justify-end mt-4">
+                    <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-5 rounded-full shadow-lg transition-colors duration-300">
+                        Apply Now
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-white shadow-lg rounded-xl p-6 flex flex-col justify-between transform transition-transform hover:scale-105 duration-300">
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">Library Assistant</h2>
+                    <p class="text-green-600 text-sm font-semibold mb-3">Part-time | On-campus</p>
+                    <p class="text-gray-700 mb-4">
+                        Help maintain the university library's collection, assist students with locating resources, and support daily operations. Ideal for students seeking a quiet and organized work environment.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-600 text-sm mb-4">
+                        <li>Familiarity with library systems a plus</li>
+                        <li>Attention to detail</li>
+                        <li>Good organizational skills</li>
+                    </ul>
+                    <div class="mt-auto pt-4 border-t border-gray-200 text-sm text-gray-500">
+                        <p><strong>Location:</strong> University Campus</p>
+                        <p><strong>Salary:</strong> $12 - $14/hour</p>
+                    </div>
+                </div>
+                <div class="flex justify-end mt-4">
+                    <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-5 rounded-full shadow-lg transition-colors duration-300">
+                        Apply Now
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-white shadow-lg rounded-xl p-6 flex flex-col justify-between transform transition-transform hover:scale-105 duration-300">
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">Cafeteria Staff</h2>
+                    <p class="text-yellow-600 text-sm font-semibold mb-3">Part-time | Food Service</p>
+                    <p class="text-gray-700 mb-4">
+                        Serve food, clean dining areas, and assist with kitchen duties in the campus cafeteria. A fast-paced role perfect for energetic students.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-600 text-sm mb-4">
+                        <li>Ability to work in a team</li>
+                        <li>Basic food handling knowledge (training provided)</li>
+                        <li>Flexible schedule options</li>
+                    </ul>
+                    <div class="mt-auto pt-4 border-t border-gray-200 text-sm text-gray-500">
+                        <p><strong>Location:</strong> University Cafeteria</p>
+                        <p><strong>Salary:</strong> $13 - $16/hour</p>
+                    </div>
+                </div>
+                <div class="flex justify-end mt-4">
+                    <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-5 rounded-full shadow-lg transition-colors duration-300">
+                        Apply Now
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-white shadow-lg rounded-xl p-6 flex flex-col justify-between transform transition-transform hover:scale-105 duration-300">
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">Marketing Intern</h2>
+                    <p class="text-blue-600 text-sm font-semibold mb-3">Internship | Remote Possible</p>
+                    <p class="text-gray-700 mb-4">
+                        Assist our marketing team with social media content creation, campaign analysis, and market research. Gain valuable experience in digital marketing.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-600 text-sm mb-4">
+                        <li>Strong writing skills</li>
+                        <li>Familiarity with social media platforms</li>
+                        <li>Proficiency in Google Suite preferred</li>
+                    </ul>
+                    <div class="mt-auto pt-4 border-t border-gray-200 text-sm text-gray-500">
+                        <p><strong>Location:</strong> Remote/Hybrid</p>
+                        <p><strong>Stipend:</strong> $500 - $800/month</p>
+                        <p><strong>Application Deadline:</strong> July 31, 2025</p>
+                    </div>
+                </div>
+                <div class="flex justify-end mt-4">
+                    <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-5 rounded-full shadow-lg transition-colors duration-300">
+                        Apply Now
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-white shadow-lg rounded-xl p-6 flex flex-col justify-between transform transition-transform hover:scale-105 duration-300">
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">Research Assistant</h2>
+                    <p class="text-purple-600 text-sm font-semibold mb-3">Part-time | Academic</p>
+                    <p class="text-gray-700 mb-4">
+                        Support faculty members with data collection, literature reviews, and experiment setup for various research projects. Excellent for students pursuing higher education.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-600 text-sm mb-4">
+                        <li>Strong analytical skills</li>
+                        <li>Ability to work independently</li>
+                        <li>Relevant coursework preferred</li>
+                    </ul>
+                    <div class="mt-auto pt-4 border-t border-gray-200 text-sm text-gray-500">
+                        <p><strong>Location:</strong> University Lab</p>
+                        <p><strong>Salary:</strong> $16 - $20/hour</p>
+                        <p><strong>Stipend:</strong> Not applicable (hourly wage)</p>
+                        <p><strong>Application Deadline:</strong> August 15, 2025</p>
+                    </div>
+                </div>
+                <div class="flex justify-end mt-4">
+                    <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-5 rounded-full shadow-lg transition-colors duration-300">
+                        Apply Now
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-white shadow-lg rounded-xl p-6 flex flex-col justify-between transform transition-transform hover:scale-105 duration-300">
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">Customer Support Specialist</h2>
+                    <p class="text-teal-600 text-sm font-semibold mb-3">Part-time | Remote</p>
+                    <p class="text-gray-700 mb-4">
+                        Provide excellent customer service via chat and email for a growing tech startup. Help users with product inquiries and technical issues.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-600 text-sm mb-4">
+                        <li>Excellent written communication</li>
+                        <li>Problem-solving skills</li>
+                        <li>Comfortable with technology</li>
+                    </ul>
+                    <div class="mt-auto pt-4 border-t border-gray-200 text-sm text-gray-500">
+                        <p><strong>Location:</strong> Remote</p>
+                        <p><strong>Salary:</strong> $14 - $17/hour</p>
+                        <p><strong>Stipend:</strong> Not applicable (hourly wage)</p>
+                        <p><strong>Working Hours:</strong> Evenings/Weekends preferred</p>
+                    </div>
+                </div>
+                <div class="flex justify-end mt-4">
+                    <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-5 rounded-full shadow-lg transition-colors duration-300">
+                        Apply Now
+                    </button>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <footer class="bg-gray-800 text-white py-8 mt-12 rounded-t-3xl">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-lg">&copy; 2025 Student Gig. All rights reserved.</p>
+            <p class="text-sm mt-2 opacity-80">Designed with passion for student success.</p>
+        </div>
+    </footer>
+
+    <script type="module">
+        // Placeholder for logout functionality (since Firebase auth is removed)
+        const logoutButton = document.getElementById('logoutButton');
+        if (logoutButton) {
+            logoutButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert("Logging out (simulated). Redirecting to home.");
+                setTimeout(() => {
+                    window.location.href = 'index.html'; // Redirect to home page after simulated logout
+                }, 1500);
+            });
+        }
+    </script>
+</body>
+</html>
