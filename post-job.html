@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post a Job - Student Gig</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom scrollbar for textareas */
+        textarea::-webkit-scrollbar {
+            width: 8px;
+            border-radius: 4px;
+        }
+        textarea::-webkit-scrollbar-track {
+            background: #e0e0e0;
+            border-radius: 4px;
+        }
+        textarea::-webkit-scrollbar-thumb {
+            background: #a0a0a0;
+            border-radius: 4px;
+        }
+        textarea::-webkit-scrollbar-thumb:hover {
+            background: #707070;
+        }
+        /* Custom scrollbar for overall page */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb; /* Light gray background, consistent with other pages */
+        }
+        /* Custom styles for button hover effects */
+        .button-primary {
+            @apply inline-block px-8 py-3 rounded-full text-white font-semibold transition-all duration-300 ease-in-out;
+            background: linear-gradient(90deg, #6366f1, #a855f7); /* Purple gradient */
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+        .button-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+            background: linear-gradient(90deg, #a855f7, #6366f1); /* Reverse gradient on hover */
+        }
+        /* Custom styles for section titles */
+        .page-title {
+            @apply text-4xl md:text-5xl font-extrabold text-gray-800 mb-8 text-center;
+        }
+    </style>
+</head>
+<body class="antialiased bg-gray-50 text-gray-700 leading-relaxed">
+    <header class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-6 shadow-lg rounded-b-3xl">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl font-extrabold mb-2">Post a New Job</h1>
+            <p class="text-xl font-light opacity-90">Share exciting opportunities with your fellow students!</p>
+        </div>
+    </header>
+
+    <nav class="bg-white shadow-md sticky top-0 z-50 rounded-b-2xl">
+        <div class="container mx-auto px-4 py-4 flex flex-wrap justify-center md:justify-between items-center">
+            <div class="text-lg font-bold text-indigo-700 hidden md:block">Student Gig</div>
+            <ul class="flex flex-wrap justify-center space-x-4 md:space-x-8">
+                <li><a href="index.html" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 rounded-md py-2 px-3">Home</a></li>
+                <li><a href="student-dashboard.html" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 rounded-md py-2 px-3">Dashboard</a></li>
+                
+                <li><a href="job-details.html" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 rounded-md py-2 px-3">Job-Details</a></li>
+                <li><a href="index.html" id="logoutButton" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 rounded-md py-2 px-3">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-12">
+        <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-2xl mx-auto">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Enter Job Details</h2>
+
+            <form id="jobPostForm" class="space-y-6">
+                <div>
+                    <label for="jobTitle" class="block text-sm font-medium text-gray-700 mb-1">Job Title</label>
+                    <input type="text" id="jobTitle" name="jobTitle" placeholder="e.g., Software Engineering Intern"
+                           class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-base transition duration-150 ease-in-out" required>
+                </div>
+
+                <div>
+                    <label for="companyName" class="block text-sm font-medium text-gray-700 mb-1">Company Name</label>
+                    <input type="text" id="companyName" name="companyName" placeholder="e.g., Tech Innovations Inc."
+                           class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-base transition duration-150 ease-in-out" required>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="location" class="block text-sm font-medium text-gray-700 mb-1">Location (Optional)</label>
+                        <input type="text" id="location" name="location" placeholder="e.g., Remote, New York, NY"
+                               class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-base transition duration-150 ease-in-out">
+                    </div>
+                    <div>
+                        <label for="jobType" class="block text-sm font-medium text-gray-700 mb-1">Job Type</label>
+                        <select id="jobType" name="jobType"
+                                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-base transition duration-150 ease-in-out bg-white" required>
+                            <option value="">Select Job Type</option>
+                            <option value="Full-time">Full-time</option>
+                            <option value="Part-time">Part-time</option>
+                            <option value="Internship">Internship</option>
+                            <option value="Contract">Contract</option>
+                            <option value="Temporary">Temporary</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="jobDescription" class="block text-sm font-medium text-gray-700 mb-1">Job Description</label>
+                    <textarea id="jobDescription" name="jobDescription" rows="5" placeholder="Provide a detailed description of the job responsibilities and duties."
+                              class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-base transition duration-150 ease-in-out resize-y" required></textarea>
+                </div>
+
+                <div>
+                    <label for="requirements" class="block text-sm font-medium text-gray-700 mb-1">Requirements / Qualifications</label>
+                    <textarea id="requirements" name="requirements" rows="4" placeholder="List the necessary skills, experience, and qualifications."
+                              class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-base transition duration-150 ease-in-out resize-y"></textarea>
+                </div>
+
+                <div>
+                    <label for="applicationContact" class="block text-sm font-medium text-gray-700 mb-1">Application Link or Email</label>
+                    <input type="text" id="applicationContact" name="applicationContact" placeholder="e.g., https://company.com/apply or apply@company.com"
+                           class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-base transition duration-150 ease-in-out">
+                </div>
+
+                <div>
+                    <label for="contactPerson" class="block text-sm font-medium text-gray-700 mb-1">Contact Person (Optional)</label>
+                    <input type="text" id="contactPerson" name="contactPerson" placeholder="e.g., Jane Doe, HR Manager"
+                           class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-base transition duration-150 ease-in-out">
+                </div>
+
+                <div>
+                    <button type="submit"
+                            class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-semibold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200 ease-in-out transform hover:scale-105">
+                        Post Job
+                    </button>
+                </div>
+            </form>
+
+            <div id="submittedJobDetails" class="mt-8 pt-6 border-t border-gray-200 hidden">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">Submitted Job Details:</h2>
+                <div id="jobOutput" class="bg-blue-50 p-6 rounded-lg border border-blue-200 text-gray-700 space-y-3">
+                    </div>
+                <button id="resetFormButton"
+                        class="mt-6 w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-blue-700 bg-blue-100 hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200 ease-in-out transform hover:scale-105">
+                    Post Another Job
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8 mt-12 rounded-t-3xl">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-lg">&copy; 2025 Student Gig. All rights reserved.</p>
+            <p class="text-sm mt-2 opacity-80">Designed with passion for student success.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('jobPostForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const form = event.target;
+            const formData = new FormData(form);
+            const jobDetails = {};
+
+            // Collect form data
+            for (let [key, value] of formData.entries()) {
+                jobDetails[key] = value || 'N/A'; // Use 'N/A' for empty optional fields
+            }
+
+            const jobOutputDiv = document.getElementById('jobOutput');
+            jobOutputDiv.innerHTML = `
+                <p><strong>Job Title:</strong> ${jobDetails.jobTitle}</p>
+                <p><strong>Company Name:</strong> ${jobDetails.companyName}</p>
+                <p><strong>Location:</strong> ${jobDetails.location}</p>
+                <p><strong>Job Type:</strong> ${jobDetails.jobType}</p>
+                <p><strong>Job Description:</strong> <br>${jobDetails.jobDescription.replace(/\n/g, '<br>')}</p>
+                <p><strong>Requirements:</strong> <br>${jobDetails.requirements.replace(/\n/g, '<br>')}</p>
+                <p><strong>Application Contact:</strong> ${jobDetails.applicationContact}</p>
+                <p><strong>Contact Person:</strong> ${jobDetails.contactPerson}</p>
+            `;
+
+            // Show the submitted details section and hide the form
+            document.getElementById('submittedJobDetails').classList.remove('hidden');
+            form.classList.add('hidden');
+
+            // --- ADDED: Pop-up message ---
+            alert("Job posted successfully!");
+            // -----------------------------
+        });
+
+        document.getElementById('resetFormButton').addEventListener('click', function() {
+            // Reset the form and show it again
+            document.getElementById('jobPostForm').reset();
+            document.getElementById('jobPostForm').classList.remove('hidden');
+            document.getElementById('submittedJobDetails').classList.add('hidden');
+            document.getElementById('jobOutput').innerHTML = ''; // Clear previous output
+        });
+
+        // Logout functionality (Placeholder since Firebase auth is removed)
+        const logoutButton = document.getElementById('logoutButton');
+        if (logoutButton) {
+            logoutButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert("Logging out (simulated). Redirecting to home.");
+                setTimeout(() => {
+                    window.location.href = 'index.html'; // Redirect to home page after simulated logout
+                }, 1500);
+            });
+        }
+    </script>
+</body>
+</html>
