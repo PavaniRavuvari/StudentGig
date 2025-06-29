@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Gig - Connects Students with Freelance Opportunities</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom scrollbar for a smoother look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif; /* Using Inter font */
+        }
+        /* Custom styles for button hover effects */
+        .button-primary {
+            @apply inline-block px-8 py-3 rounded-full text-white font-semibold transition-all duration-300 ease-in-out;
+            background: linear-gradient(90deg, #6366f1, #a855f7); /* Purple gradient */
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+        .button-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+            background: linear-gradient(90deg, #a855f7, #6366f1); /* Reverse gradient on hover */
+        }
+        .button-secondary {
+            @apply inline-block px-8 py-3 rounded-full text-white font-semibold transition-all duration-300 ease-in-out border-2 border-indigo-500;
+            background: transparent;
+        }
+        .button-secondary:hover {
+            transform: translateY(-3px);
+            background: #6366f1;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+        /* Custom styles for section titles */
+        .section-title {
+            @apply text-4xl md:text-5xl font-extrabold text-gray-800 mb-8 relative pb-4;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #6366f1, #a855f7);
+            border-radius: 2px;
+        }
+        /* Styling for list items with icons */
+        .list-item-icon::before {
+            content: '✅'; /* Checkmark icon */
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-700 leading-relaxed">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-6 shadow-lg rounded-b-3xl">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl font-extrabold mb-2">Student Gig</h1>
+            <p class="text-xl font-light opacity-90">Your bridge between skill and opportunity.</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50 rounded-b-2xl">
+        <div class="container mx-auto px-4 py-4 flex flex-wrap justify-center md:justify-between items-center">
+            <div class="text-lg font-bold text-indigo-700 hidden md:block">Student Gig</div>
+            <ul class="flex flex-wrap justify-center space-x-4 md:space-x-8">
+                <li><a href="#hero" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 rounded-md py-2 px-3">Home</a></li>
+                <!-- <li><a href="register.html" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 rounded-md py-2 px-3">Register</a></li> -->
+                <li><a href="student-dashboard.html" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 rounded-md py-2 px-3">Dashboard</a></li>
+                <li><a href="post-job.html" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 rounded-md py-2 px-3">Jobs</a></li>
+                <li><a href="job-details.html" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 rounded-md py-2 px-3">Job-Details</a></li>
+                <!-- <li><a href="login.html" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 rounded-md py-2 px-3">Login</a></li> -->
+                <!-- <li><a href="#about" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 rounded-md py-2 px-3">About</a></li>
+                <li><a href="#advantages" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 rounded-md py-2 px-3">Advantages</a></li>
+                <li><a href="#future-scope" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 rounded-md py-2 px-3">Future Scope</a></li> -->
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-12">
+        <!-- Hero Section -->
+        <section id="hero" class="bg-white rounded-3xl shadow-xl p-8 md:p-16 mb-12 text-center flex flex-col items-center justify-center min-h-[50vh]">
+            <h2 class="text-4xl md:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">Find Flexible Work or Affordable Talent</h2>
+            <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl">Student Gig is a web-based platform designed to connect students with freelance job opportunities. It allows students to find flexible, part-time work and helps clients (individuals or businesses) post gigs and find affordable talent. We bridge the gap between skill and opportunity, focusing on early-career freelancers.</p>
+            <div class="flex flex-col sm:flex-row gap-6">
+                <a href="register.html" class="button-primary">Join as a Student</a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="bg-white rounded-3xl shadow-xl p-8 md:p-16 mb-12">
+            <!-- Removed 'section-title' class and 'pb-4' for no underline -->
+            <h2 class="text-4xl md:text-5xl font-extrabold text-gray-800 mb-8 text-center">How it Works</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                <div class="bg-indigo-50 p-6 rounded-2xl shadow-md transform hover:scale-105 transition-transform duration-300">
+                    <h3 class="text-2xl font-bold text-indigo-700 mb-4">For Students:</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="list-item-icon">Gain real-world experience.</li>
+                        <li class="list-item-icon">Build impressive portfolios.</li>
+                        <li class="list-item-icon">Earn side income.</li>
+                    </ul>
+                </div>
+                <div class="bg-purple-50 p-6 rounded-2xl shadow-md transform hover:scale-105 transition-transform duration-300">
+                    <h3 class="text-2xl font-bold text-purple-700 mb-4">For Clients:</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="list-item-icon">Hire fresh talent at affordable rates.</li>
+                        <li class="list-item-icon">Find assistance for short-term tasks.</li>
+                    </ul>
+                </div>
+                <div class="bg-green-50 p-6 rounded-2xl shadow-md transform hover:scale-105 transition-transform duration-300">
+                    <h3 class="text-2xl font-bold text-green-700 mb-4">For Colleges:</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="list-item-icon">Encourage entrepreneurship.</li>
+                        <li class="list-item-icon">Foster skill development among students.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Advantages & Disadvantages Section -->
+        <section id="advantages" class="bg-white rounded-3xl shadow-xl p-8 md:p-16 mb-12">
+            <h2 class="section-title text-center">Advantages & Disadvantages</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+                <div class="bg-yellow-50 p-6 rounded-2xl shadow-md transform hover:scale-105 transition-transform duration-300">
+                    <h3 class="text-2xl font-bold text-yellow-700 mb-4">Advantages:</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="list-item-icon">Simple and student-friendly interface.</li>
+                        <li class="list-item-icon">Easy way to gain freelance work experience.</li>
+                        <li class="list-item-icon">Helps build early career credibility.</li>
+                        <li class="list-item-icon">Encourages self-learning and discipline.</li>
+                    </ul>
+                </div>
+                <div class="bg-red-50 p-6 rounded-2xl shadow-md transform hover:scale-105 transition-transform duration-300">
+                    <h3 class="text-2xl font-bold text-red-700 mb-4">Disadvantages:</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="list-item-icon">Risk of spam or unverified jobs.</li>
+                        <li class="list-item-icon">May lack strong payment/invoicing system initially.</li>
+                        <li class="list-item-icon">Needs moderation to prevent misuse.</li>
+                        <li class="list-item-icon">Hard to compete with big freelancing platforms.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Future Scope Section -->
+        <section id="future-scope" class="bg-white rounded-3xl shadow-xl p-8 md:p-16">
+            <h2 class="section-title text-center">Our Future Vision</h2>
+            <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12 text-gray-700">
+                <li class="bg-blue-50 p-4 rounded-xl shadow-sm list-item-icon transform hover:scale-105 transition-transform duration-300">Add real-time chat with Firebase/WebSockets.</li>
+                <li class="bg-blue-50 p-4 rounded-xl shadow-sm list-item-icon transform hover:scale-105 transition-transform duration-300">Launch mobile app version.</li>
+                <li class="bg-blue-50 p-4 rounded-xl shadow-sm list-item-icon transform hover:scale-105 transition-transform duration-300">AI-based skill-to-job match recommendations.</li>
+                <li class="bg-blue-50 p-4 rounded-xl shadow-sm list-item-icon transform hover:scale-105 transition-transform duration-300">Integrated payment gateways (Stripe/Razorpay).</li>
+                <li class="bg-blue-50 p-4 rounded-xl shadow-sm list-item-icon transform hover:scale-105 transition-transform duration-300">Analytics dashboard for freelancers and clients.</li>
+                <li class="bg-blue-50 p-4 rounded-xl shadow-sm list-item-icon transform hover:scale-105 transition-transform duration-300">University tie-ups for verified student portfolios.</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12 rounded-t-3xl">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-lg">&copy; 2025 Student Gig. All rights reserved.</p>
+            <p class="text-sm mt-2 opacity-80">Designed with passion for student success.</p>
+        </div>
+    </footer>
+</body>
+</html>
