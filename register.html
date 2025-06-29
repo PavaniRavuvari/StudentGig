@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Student Gig</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom scrollbar for a smoother look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif; /* Using Inter font */
+        }
+        /* Custom styles for button hover effects */
+        .button-primary {
+            @apply inline-block px-8 py-3 rounded-full text-white font-semibold transition-all duration-300 ease-in-out;
+            background: linear-gradient(90deg, #6366f1, #a855f7); /* Purple gradient */
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+        .button-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+            background: linear-gradient(90deg, #a855f7, #6366f1); /* Reverse gradient on hover */
+        }
+        /* Custom styles for section titles (adapted for register page) */
+        .page-title {
+            @apply text-4xl md:text-5xl font-extrabold text-gray-800 mb-8 text-center;
+        }
+        /* Style for alert messages */
+        .alert {
+            @apply p-4 mb-4 rounded-lg text-sm;
+        }
+        .alert-success {
+            @apply bg-green-100 text-green-700;
+        }
+        .alert-error {
+            @apply bg-red-100 text-red-700;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-700 leading-relaxed">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-6 shadow-lg rounded-b-3xl">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl font-extrabold mb-2">Student Gig</h1>
+            <p class="text-xl font-light opacity-90">Register for your account</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50 rounded-b-2xl">
+        <div class="container mx-auto px-4 py-4 flex flex-wrap justify-center md:justify-between items-center">
+            <div class="text-lg font-bold text-indigo-700 hidden md:block">Student Gig</div>
+            <ul class="flex flex-wrap justify-center space-x-4 md:space-x-8">
+                <li><a href="index.html" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 rounded-md py-2 px-3">Home</a></li>
+                <li><a href="register.html" class="text-indigo-600 font-bold transition duration-300 rounded-md py-2 px-3">Register</a></li>
+                <li><a href="login.html" class="text-gray-600 hover:text-indigo-600 font-medium transition duration-300 rounded-md py-2 px-3">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-12">
+        <div class="bg-white rounded-3xl shadow-xl p-8 md:p-16 mb-12 max-w-xl mx-auto">
+            <h2 class="page-title">Create Your Account</h2>
+            <div id="auth-message" class="alert hidden" role="alert"></div>
+
+            <form id="registerForm" class="space-y-6">
+                <div>
+                    <label for="registerEmail" class="block text-gray-700 text-lg font-semibold mb-2">Email:</label>
+                    <input type="email" id="registerEmail" required
+                           class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300 bg-gray-50 text-gray-800">
+                </div>
+
+                <div>
+                    <label for="registerPassword" class="block text-gray-700 text-lg font-semibold mb-2">Password:</label>
+                    <input type="password" id="registerPassword" required
+                           class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300 bg-gray-50 text-gray-800">
+                </div>
+
+                <div>
+                    <label for="userType" class="block text-gray-700 text-lg font-semibold mb-2">Register as:</label>
+                    <select id="userType" required
+                            class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300 bg-gray-50 text-gray-800">
+                        <option value="">--Select--</option>
+                        <option value="student">Student</option>
+                        <option value="client">Client</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="button-primary w-full">Register</button>
+            </form>
+            <p class="mt-8 text-center text-gray-600">Already have an account? <a href="login.html" class="text-indigo-600 hover:text-indigo-800 font-semibold transition duration-300">Login here</a></p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12 rounded-t-3xl">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-lg">&copy; 2025 Student Gig. All rights reserved.</p>
+            <p class="text-sm mt-2 opacity-80">Designed with passion for student success.</p>
+        </div>
+    </footer>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Firebase configuration and initialization (provided by Canvas environment)
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+
+        // Initialize Firebase
+        let app;
+        let auth;
+        let db;
+
+        try {
+            if (Object.keys(firebaseConfig).length > 0) {
+                app = initializeApp(firebaseConfig);
+                auth = getAuth(app);
+                db = getFirestore(app);
+
+                // Sign in with custom token if available, otherwise anonymously
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    signInWithCustomToken(auth, __initial_auth_token).catch((error) => {
+                        console.error("Error signing in with custom token:", error);
+                        signInAnonymously(auth).catch(err => console.error("Anonymous sign-in failed:", err));
+                    });
+                } else {
+                    signInAnonymously(auth).catch(err => console.error("Anonymous sign-in failed:", err));
+                }
+            } else {
+                console.error("Firebase config is empty. Cannot initialize Firebase.");
+                displayMessage("Firebase is not configured. Registration may not work.", "error");
+            }
+        } catch (error) {
+            console.error("Error initializing Firebase:", error);
+            displayMessage("Failed to initialize Firebase. Check console for details.", "error");
+        }
+
+        const registerForm = document.getElementById('registerForm');
+        const registerEmail = document.getElementById('registerEmail');
+        const registerPassword = document.getElementById('registerPassword');
+        const userTypeSelect = document.getElementById('userType');
+        const authMessage = document.getElementById('auth-message');
+
+        function displayMessage(message, type) {
+            authMessage.textContent = message;
+            authMessage.className = `alert ${type === 'success' ? 'alert-success' : 'alert-error'} block`;
+            setTimeout(() => {
+                authMessage.classList.add('hidden');
+            }, 5000); // Hide message after 5 seconds
+        }
+
+        registerForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            if (!auth || !db) {
+                displayMessage("Firebase is not ready. Please try again.", "error");
+                return;
+            }
+
+            const email = registerEmail.value;
+            const password = registerPassword.value;
+            const userType = userTypeSelect.value;
+
+            if (!userType) {
+                displayMessage("Please select a user type (Student or Client).", "error");
+                return;
+            }
+
+            try {
+                // Create user with email and password
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+
+                // Store user data in Firestore
+                const userId = user.uid;
+                const userDocRef = doc(db, `artifacts/${appId}/users/${userId}/user_data/profile`);
+                await setDoc(userDocRef, {
+                    email: email,
+                    userType: userType,
+                    createdAt: new Date()
+                });
+
+                displayMessage("Registration successful! Redirecting to login...", "success");
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 2000); // Redirect after 2 seconds
+            } catch (error) {
+                console.error("Registration error:", error);
+                let errorMessage = "An unknown error occurred during registration.";
+                switch (error.code) {
+                    case 'auth/email-already-in-use':
+                        errorMessage = "This email is already registered. Please log in or use a different email.";
+                        break;
+                    case 'auth/invalid-email':
+                        errorMessage = "Invalid email address.";
+                        break;
+                    case 'auth/operation-not-allowed':
+                        errorMessage = "Email/password accounts are not enabled. Please contact support.";
+                        break;
+                    case 'auth/weak-password':
+                        errorMessage = "Password is too weak. Please choose a stronger password.";
+                        break;
+                    default:
+                        errorMessage = error.message;
+                        break;
+                }
+                displayMessage(`Registration failed: ${errorMessage}`, "error");
+            }
+        });
+    </script>
+</body>
+</html>
